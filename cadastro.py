@@ -13,14 +13,14 @@ class Application:
         
         self.terceiroContainer = Frame(master)
         self.terceiroContainer["padx"] = 20
-        self.terceiroContainer.pack
+        self.terceiroContainer.pack()
         
         self.quartoContainer = Frame(master)
         self.quartoContainer["padx"] = 20
-        self.quartoContainer.pack
+        self.quartoContainer.pack()
         
         self.titulo = Label(self.prieiroContainer, text="Dados do Usuario")
-        self.titulo["Font"] = ("Arial", "10", "bold")
+        self.titulo["font"] = ("Arial", "10", "bold")
         self.titulo.pack()
         
         self.nomeLabel = Label(self.segundoContainer,text="Nome")
@@ -45,6 +45,19 @@ class Application:
         self.autenticar["font"] = ("Calibri", "8")
         self.autenticar["width"] = 12
         self.autenticar["command"] = self.verificaSenha
+        self.autenticar.pack()
+
+        self.mensagem = Label(self.quartoContainer, text="", font=self.fontePadrao)
+        self.mensagem.pack()
+
+   
+    def verificaSenha(self):
+        usuario = self.nome.get()
+        senha = self.senha.get()
+        if usuario == "usuariodevmedia" and senha =="dev":
+            self.mensagem["text"] = "Autenticado"
+        else:
+            self.mensagem["text"] = "Erro na autenticação"
         
 root = Tk()
 Application(root)
